@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
-	darkMode: ["class"],
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -61,13 +61,21 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        icon: 'hsl(var(--muted-foreground))' // PRD: icon color (#606770), maps to muted-foreground
 			},
+			fontFamily: {
+        sans: ['var(--font-primary)', ...defaultTheme.fontFamily.sans],
+      },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			boxShadow: {
+        // PRD mentions "shadow-sm" for default, which is a Tailwind utility.
+        // No custom shadows specified beyond Tailwind defaults.
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
